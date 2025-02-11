@@ -14,11 +14,7 @@
     },
     {
       "name": "welcome",
-      "value": "欢迎来到代码世界"
-    },
-    {
-      "name": "test",
-      "value": "1111111111"
+      "value": "welcome to harmonyOS"
     }
   ]
 }
