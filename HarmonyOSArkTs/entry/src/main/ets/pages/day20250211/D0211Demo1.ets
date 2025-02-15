@@ -15,7 +15,7 @@ import { CommonConstants } from '../../common/CommonConstants'
 })
  */
 // @Preview({
-//   title: 'demo01preview',
+//   title: 'D0211Demo1',
 //   deviceType: 'tablet',
 //   colorMode: 'dark',
 //   dpi: 480,
@@ -26,7 +26,7 @@ import { CommonConstants } from '../../common/CommonConstants'
 
 @Entry
 @Component
-struct Demo01preview {
+struct D0211Demo1 {
   build() {
     Column({ space: CommonConstants.Size }) {
       Text($r("app.string.welcome"))

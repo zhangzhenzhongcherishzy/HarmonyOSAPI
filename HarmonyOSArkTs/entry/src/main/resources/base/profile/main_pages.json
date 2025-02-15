@@ -1,6 +1,11 @@
 {
   "src": [
     "pages/Index",
-    "pages/day20250211/Demo01preview"
+    "pages/day20250211/D0211Demo1",
+    "pages/day20250217/D0217Demo1",
+    "pages/day20250217/D0217Demo2",
+    "pages/day20250217/D0217Demo3",
+    "pages/day20250217/D0217Demo4",
+    "pages/day20250217/D0217Demo5"
   ]
 }
