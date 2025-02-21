@@ -1,8 +1,8 @@
 @Entry
 @Component
-struct D0217Demo5 {
+struct D0219Demo1 {
   @State numbers: string[] = []
-  scroller: Scroller = new Scroller()
+  @State strings:string[] = []
   @State text: string = 'drag'
 
   @Builder
@@ -10,8 +10,8 @@ struct D0217Demo5 {
     Column() {
       Text(this.text)
         .fontSize(16)
-        .backgroundColor(0xF9CF93)
-        .width(80)
+        .backgroundColor('#75ff4100')
+        .width('100%')
         .height(80)
         .textAlign(TextAlign.Center)
     }
@@ -32,24 +32,23 @@ struct D0217Demo5 {
 
   build() {
     Column({ space: 5 }) {
-      Grid(this.scroller) {
+      List({space:10}) {
         ForEach(this.numbers, (day: string) => {
-          GridItem() {
+          ListItem() {
             Text(day)
               .fontSize(16)
               .backgroundColor(0xF9CF93)
-              .width(80)
+              .width('100%')
               .height(80)
               .textAlign(TextAlign.Center)
           }
+          .width('100%')
         })
       }
-      .columnsTemplate('1fr 1fr 1fr')
-      .columnsGap(10)
-      .rowsGap(10)
+      .multiSelectable(true)
       .width('90%')
       .backgroundColor(0xFAEEE0)
-      .height('90%')
+      .height('70%')
       .editMode(true) //设置Grid是否进入编辑模式，进入编辑模式可以拖拽Grid组件内部GridItem
       .onItemDragStart((event: ItemDragInfo, itemIndex: number) => { //第一次拖拽此事件绑定的组件时，触发回调。
         this.text = this.numbers[itemIndex]
@@ -63,6 +62,24 @@ struct D0217Demo5 {
         }
         console.info('beixiang' + itemIndex + '', insertIndex + '') //itemIndex拖拽起始位置，insertIndex拖拽插入位置
         this.changeIndex(itemIndex, insertIndex)
+      })
+      .onItemMove((from:number,to:number) => {
+        console.log(`>>>>移动前索引值${from}:移动后索引值${to}`)
+        return true
+      })
+      .onItemDragEnter((event: ItemDragInfo) => {
+        console.log(`>>>>当前拖拽点的x坐标${event.x}:当前拖拽点的y坐标${event.y}`)
+      })
+      .onItemDragMove((event: ItemDragInfo, itemIndex: number, insertIndex: number) => {
+        // console.log(`>>>>触发拖拽移动`)
+        // console.log(`>>>>当前拖拽点的x坐标${event.x}:当前拖拽点的y坐标${event.y}:移动得索引是${itemIndex}`)
+      })
+      .onItemDragLeave((event: ItemDragInfo, itemIndex: number) => {
+        console.log(`>>>>当前拖拽点的x坐标${event.x}:当前拖拽点的y坐标${event.y}:移动得索引是${itemIndex}`)
+      })
+      .onScrollVisibleContentChange((start:VisibleListContentInfo,end:VisibleListContentInfo) => {
+        //当前显示界面第一个ListItem或ListItemGroup的详细信息
+        console.log(`>>>>第一个listitem得索引${start.index}:第一个listitem得所处的位置${JSON.stringify(start.itemGroupArea)}:第一个listitem得索引${start.itemIndexInGroup}`)
       })
     }.width('100%').margin({ top: 5 })
   }
