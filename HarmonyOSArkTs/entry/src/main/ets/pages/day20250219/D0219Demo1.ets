@@ -2,7 +2,7 @@
 @Component
 struct D0219Demo1 {
   @State numbers: string[] = []
-  @State strings:string[] = []
+  @State strings: string[] = []
   @State text: string = 'drag'
 
   @Builder
@@ -32,7 +32,7 @@ struct D0219Demo1 {
 
   build() {
     Column({ space: 5 }) {
-      List({space:10}) {
+      List({ space: 10 }) {
         ForEach(this.numbers, (day: string) => {
           ListItem() {
             Text(day)
@@ -49,7 +49,7 @@ struct D0219Demo1 {
       .width('90%')
       .backgroundColor(0xFAEEE0)
       .height('70%')
-      .editMode(true) //设置Grid是否进入编辑模式，进入编辑模式可以拖拽Grid组件内部GridItem
+      // .editMode(true) //设置Grid是否进入编辑模式，进入编辑模式可以拖拽Grid组件内部GridItem
       .onItemDragStart((event: ItemDragInfo, itemIndex: number) => { //第一次拖拽此事件绑定的组件时，触发回调。
         this.text = this.numbers[itemIndex]
         return this.pixelMapBuilder() //设置拖拽过程中显示的图片。
@@ -63,7 +63,7 @@ struct D0219Demo1 {
         console.info('beixiang' + itemIndex + '', insertIndex + '') //itemIndex拖拽起始位置，insertIndex拖拽插入位置
         this.changeIndex(itemIndex, insertIndex)
       })
-      .onItemMove((from:number,to:number) => {
+      .onItemMove((from: number, to: number) => {
         console.log(`>>>>移动前索引值${from}:移动后索引值${to}`)
         return true
       })
@@ -77,7 +77,7 @@ struct D0219Demo1 {
       .onItemDragLeave((event: ItemDragInfo, itemIndex: number) => {
         console.log(`>>>>当前拖拽点的x坐标${event.x}:当前拖拽点的y坐标${event.y}:移动得索引是${itemIndex}`)
       })
-      .onScrollVisibleContentChange((start:VisibleListContentInfo,end:VisibleListContentInfo) => {
+      .onScrollVisibleContentChange((start: VisibleListContentInfo, end: VisibleListContentInfo) => {
         //当前显示界面第一个ListItem或ListItemGroup的详细信息
         console.log(`>>>>第一个listitem得索引${start.index}:第一个listitem得所处的位置${JSON.stringify(start.itemGroupArea)}:第一个listitem得索引${start.itemIndexInGroup}`)
       })

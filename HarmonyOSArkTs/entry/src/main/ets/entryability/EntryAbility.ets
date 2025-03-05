@@ -4,6 +4,26 @@ import { window } from '@kit.ArkUI';
 
 const DOMAIN = 0x0000;
 
+export class people_message {
+  name: string
+  phones: string
+  zj_type: string
+  zj_num: string
+  sex: string
+  birth: string
+  dq: string
+
+  constructor(name: string, phones: string, zj_type: string, zj_num: string, sex: string, birth: string, dq: string) {
+    this.name = name;
+    this.phones = phones;
+    this.zj_type = zj_type;
+    this.zj_num = zj_num;
+    this.sex = sex;
+    this.birth = birth;
+    this.dq = dq;
+  }
+}
+
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     this.context.getApplicationContext().setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_NOT_SET);
