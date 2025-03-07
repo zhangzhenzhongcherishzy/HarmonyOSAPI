@@ -11,6 +11,10 @@
     "pages/day20250226/D0226Demo1",
     "pages/day20250226/common/default",
     "pages/day20250305/D0305Demo1",
-    "pages/day20250305/D0305Demo2"
+    "pages/day20250305/D0305Demo2",
+    "pages/day20250307/D0307Demo1",
+    "pages/day20250307/D0307Demo2",
+    "pages/day20250307/common/father",
+    "pages/day20250307/common/Son"
   ]
 }
