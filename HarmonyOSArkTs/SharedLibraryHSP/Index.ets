@@ -1,0 +1,1 @@
+export { adds } from './src/main/ets/utils/Calc';

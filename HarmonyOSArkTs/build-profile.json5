@@ -36,6 +36,34 @@
           ]
         }
       ]
+    },
+    {
+      "name": "AbilityFeatureHAP",
+      "srcPath": "./AbilityFeatureHAP",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "StaticLibraryHAR",
+      "srcPath": "./StaticLibraryHAR",
+    },
+    {
+      "name": "SharedLibraryHSP",
+      "srcPath": "./SharedLibraryHSP",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
     }
   ]
 }

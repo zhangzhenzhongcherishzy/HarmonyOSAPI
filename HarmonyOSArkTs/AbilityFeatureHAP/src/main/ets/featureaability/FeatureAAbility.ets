@@ -1,32 +1,11 @@
-import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
 
 const DOMAIN = 0x0000;
 
-export class people_message {
-  name: string
-  phones: string
-  zj_type: string
-  zj_num: string
-  sex: string
-  birth: string
-  dq: string
-
-  constructor(name: string, phones: string, zj_type: string, zj_num: string, sex: string, birth: string, dq: string) {
-    this.name = name;
-    this.phones = phones;
-    this.zj_type = zj_type;
-    this.zj_num = zj_num;
-    this.sex = sex;
-    this.birth = birth;
-    this.dq = dq;
-  }
-}
-
-export default class EntryAbility extends UIAbility {
+export default class FeatureAAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    this.context.getApplicationContext().setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_NOT_SET);
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onCreate');
   }
 
@@ -38,7 +17,7 @@ export default class EntryAbility extends UIAbility {
     // Main window is created, set main page for this ability
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
 
-    windowStage.loadContent("pages/day20250312/D0312Demo1", (err) => {
+    windowStage.loadContent('pages/Index', (err) => {
       if (err.code) {
         hilog.error(DOMAIN, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
         return;
