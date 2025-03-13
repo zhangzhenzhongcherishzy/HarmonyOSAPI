@@ -7,13 +7,13 @@
   "license": "",
   "dependencies": {
     //引入本项目内得Har项目
-    "staticlibraryhar": "file:../StaticLibraryHAR",
+//    "staticlibraryhar": "file:../StaticLibraryHAR",
     //引入打包后得本地har文件
     //"staticlibraryhar": "StaticLibraryHAR.har"
     //引入鸿蒙远程仓库har包
     //"staticlibraryhar": "remotelibrary-1.2.0"
     //"sharedlibraryhsp": "SharedLibraryHSP.har"
-    "sharedlibraryhsp": "SharedLibraryHSP-default-unsigned.hsp"
+//    "sharedlibraryhsp": "SharedLibraryHSP-default-unsigned.hsp"
   }
 }
 
