@@ -11,6 +11,14 @@
     {
       "name": "FeatureAAbility_label",
       "value": "label"
+    },
+    {
+      "name": "featurehapability1_desc",
+      "value": "description"
+    },
+    {
+      "name": "featurehapability1_label",
+      "value": "label"
     }
   ]
 }

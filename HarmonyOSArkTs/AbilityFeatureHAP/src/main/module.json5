@@ -9,6 +9,7 @@
       "tablet",
       "2in1"
     ],
+    "srcEntry": "./ets/myabilitystage/MyAbilityStage.ets",
     "deliveryWithInstall": true,
     "installationFree": false,
     "pages": "$profile:main_pages",
@@ -21,7 +22,8 @@
         "label": "$string:FeatureAAbility_label",
         "startWindowIcon": "$media:startIcon",
         "startWindowBackground": "$color:start_window_background",
-        "exported": true
+        "exported": true,
+        "launchType": "specified"
       }
     ]
   }
