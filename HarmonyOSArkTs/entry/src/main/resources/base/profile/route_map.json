@@ -1,0 +1,22 @@
+{
+  "routerMap": [
+    {
+      "name": "pageOneTmp",
+      "pageSourceFile": "src/main/ets/pagesAbility/day20250320/D0320Demo1.ets",
+      "buildFunction": "pageOneTmpBuilder",
+      "data": {
+        "description": "pageOneTmpBuilder"
+      }
+    },
+    {
+      "name": "pageTwoTmp",
+      "pageSourceFile": "src/main/ets/pagesAbility/day20250320/D0320Demo1.ets",
+      "buildFunction": "pageTwoTmpBuilder"
+    },
+    {
+      "name": "pageThreeTmp",
+      "pageSourceFile": "src/main/ets/pagesAbility/day20250320/D0320Demo1.ets",
+      "buildFunction": "pageThreeTmpBuilder"
+    }
+  ]
+}
