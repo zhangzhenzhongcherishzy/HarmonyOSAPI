@@ -1,39 +1,30 @@
-import {
-  LemonModel,
-  temperature_Data,
-  sweetness_Data,
-  add_Materials
-} from './july_29_model'
-import { LengthMetrics} from '@ohos.arkui.node'
+import { LemonModel, temperature_Data,sweetness_Data,add_Materials } from './july_29_model'
+import { LengthMetrics } from '@kit.ArkUI'
 
 class sweetness_class{
   sweetness_content:LemonModel = new LemonModel('',0)
   index: number | undefined
   text: ResourceStr = ''
 }
-
-
-
 @Entry
 @Component
-struct July_29_am {
+struct LemonTea {
   //将温度数据使用状态变量承接
   @State temperature_arr: LemonModel[] = temperature_Data
-  //将甜度数据使用状态变量承接
-  @State sweetness_arr: LemonModel[] = sweetness_Data
-  //将加料的数据使用状态变量承接
-  @State Materials_arr: LemonModel[] = add_Materials
-  //定义订单模块的内容的温度部分
-  @State temperature_str: string = '正常冰'
-  //定义订单模块的内容的甜度部分
-  @State sweetness_str: string = '正常糖'
-  //定义订单模块的加料的内容部分
-  @State Materials_str: string = ''
   //温度区域当前的索引值
   @State temperature_index: number = 0
+  //定义订单模块的内容的温度部分
+  @State temperature_str: string = '正常冰'
+  //将甜度数据使用状态变量承接
+  @State sweetness_arr: LemonModel[] = sweetness_Data
+  //定义订单模块的内容的甜度部分
+  @State sweetness_str: string = '正常糖'
   //甜度区域当前的索引值
   @State sweetness_index:number = 0
-  // @State arr:number[] = [0]
+  //将加料的数据使用状态变量承接
+  @State Materials_arr: LemonModel[] = add_Materials
+  //定义订单模块的加料的内容部分
+  @State Materials_str: string = ''
   //总价
   @State price_all: number = 15
   //总数量
@@ -42,50 +33,36 @@ struct July_29_am {
     //最大的盒子
     Column() {
       //内容区域，包含标题、温度、甜度、加料
-      Column({ space:20 }) {
+      Column({ space: 20 }) {
         //标题部分
-        Row(){
+        Row() {
           //文字标题
           Text('石榴柠檬茶')
           //分享与收藏
-          Row({ space:10 }){
-            Image($r('app.media.news'))
+          Row({ space: 10 }) {
+            Image($r("app.media.fenxiang"))
               .width(20)
-            Image($r('app.media.news'))
+            Image($r('app.media.shoucang'))
               .width(20)
           }
-
         }
         .height(80)
         .width('100%')
         .justifyContent(FlexAlign.SpaceBetween)
         .padding(15)
-        // .backgroundColor(Color.Red)
+
         //分割线
         Divider()
           .width('95%')
         //温度
-        Row(){
+        Row() {
           Text('温度')
             .width(80)
             .height(60)
             .textAlign(TextAlign.Center)
             .align(Alignment.Top)
-            .padding({
-              top:5
-            })
-          Flex({
-            wrap:FlexWrap.Wrap,
-            space:{
-              main:{
-                value:20,
-                unit:1
-              },
-              cross:LengthMetrics.vp(10)
-              //LengthMetrics.vp(10) 需要引入相应的模块包
-            }
-          }){
-            //调用温度模块自定义组件，并传递相应的值
+            .padding({ top: 5 })
+          Flex({wrap:FlexWrap.Wrap,space:{main:{value:20,unit:1},cross:LengthMetrics.vp(10)}}){
             ForEach(this.temperature_arr,(item:LemonModel) => {
               temperature_Item({
                 //温度模块的内容数据
@@ -100,30 +77,18 @@ struct July_29_am {
           }
           .width(260)
           .height(60)
-          // .backgroundColor(Color.Red)
         }
         .width('100%')
+
         //甜度
-        Row(){
+        Row() {
           Text('甜度')
             .width(80)
             .height(60)
             .textAlign(TextAlign.Center)
             .align(Alignment.Top)
-            .padding({
-              top:5
-            })
-          Flex({
-            wrap:FlexWrap.Wrap,
-            space:{
-              main:{
-                value:20,
-                unit:1
-              },
-              cross:LengthMetrics.vp(10)
-              //LengthMetrics.vp(10) 需要引入相应的模块包
-            }
-          }){
+            .padding({ top: 5 })
+          Flex({wrap:FlexWrap.Wrap,space:{main:{value:20,unit:1},cross:LengthMetrics.vp(10)}}){
             ForEach(this.sweetness_arr,(item:LemonModel) => {
               //调用甜度区域模块，并使用按引用传递将需要的值传过去
               sweetness_Item({
@@ -134,25 +99,23 @@ struct July_29_am {
                 //甜度模块的文本渲染内容
                 text: this.sweetness_str
               })
-
             },(item:LemonModel) => JSON.stringify(item))
           }
           .width(260)
           .height(60)
-          // .backgroundColor(Color.Red)
         }
         .width('100%')
-        //加料
-        Row(){
+
+        //加料区
+        //甜度
+        Row() {
           Text('加料')
             .width(80)
+            .height(120)
             .textAlign(TextAlign.Center)
-            .height(110)
             .align(Alignment.Top)
-            .padding({
-              top:5
-            })
-          Column({space : 10}){
+            .padding({ top: 5 })
+          Column({space:10}){
             ForEach(this.Materials_arr,(item: LemonModel) => {
               //调用加料模块
               Materials_Item({
@@ -164,26 +127,25 @@ struct July_29_am {
                 Materials_arr:this.Materials_arr,
                 //一杯的价格，会因为加料的不同而改变
                 price: this.price_all
-
               })
             },(item:LemonModel) => JSON.stringify(item))
           }
+          .height(120)
         }
         .width('100%')
-
-
       }
       .height('100%')
       .height('85%')
+
       //底部下订单区域
-      Column({space: 10}){
+      Column({space:10}) {
         //价格与数量
         Row(){
           //总价 = 一杯的价格 * 总数量
           Text(`￥${this.price_all * this.account_all}`)
           Row(){
-            Image($r('app.media.news'))
-              .width(20)
+            Image($r('app.media.shanchu'))
+              .width(15)
               .onClick(() => {
                 this.account_all--
                 if(this.account_all < 1){
@@ -191,8 +153,8 @@ struct July_29_am {
                 }
               })
             Text(`${this.account_all}`)
-            Image($r('app.media.news'))
-              .width(20)
+            Image($r('app.media.tianjia'))
+              .width(15)
               .onClick(() => {
                 this.account_all++
               })
@@ -205,7 +167,7 @@ struct July_29_am {
         .height(30)
         .justifyContent(FlexAlign.SpaceBetween)
         //调用从两个模块传递过来的内容进行拼接
-        Text(`${this.temperature_str}${',' + this.sweetness_str}${this.Materials_str}`)
+        Text(`${this.temperature_str}${',' + this.sweetness_str},${this.Materials_str}`)
           .width('100%')
           .fontColor('#81838f')
         Row(){
@@ -233,19 +195,17 @@ struct July_29_am {
       }
       .width('100%')
       .height('15%')
-      .padding({
-        left:20,
-        right:20
-      })
+      .width('100%')
+      .height('15%')
+      .padding({ left:20, right:20 })
       .backgroundColor(Color.White)
     }
     .width('100%')
     .height('100%')
-    .backgroundColor('#f7f7f7')
+    .backgroundColor('#f1f2f3')
+    // .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM])
   }
 }
-
-
 
 //温度模块,因为需要使用@ObjectLink,故写成自定义组件形式
 @Component
@@ -263,15 +223,16 @@ struct temperature_Item{
       .width(50)
       .height(30)
       .border({
-        width:1,
+        width:2,
         color: this.temperature_content.index === this.index ?
-          '#56a372' : '#d4d4d4'
+          '#5eb92b' : '#cdcdcd'
       })
+      .backgroundColor(this.temperature_content.index === this.index ?
+        '#eaffe0' : '#cdcdcd')
       .borderRadius(8)
       .onClick(() => {
         this.index = this.temperature_content.index
         this.text = this.temperature_content.title
-
       })
   }
 }
@@ -313,21 +274,16 @@ struct Materials_Item{
     Row(){
       Text(this.Materials_content.title + `￥${this.Materials_content.index}`)
       Image(this.Materials_content.flg ?
-      $r('app.media.news') : $r('app.media.news'))
-        .width(20)
+      $r('app.media.shanchu') : $r('app.media.tianjia'))
+        .width(15)
     }
     .justifyContent(FlexAlign.SpaceBetween)
-    .padding({
-      left:5,
-      right:5
-    })
+    .padding({ left:5, right:5 })
     .width(260)
     .height(30)
-    .border({
-      width:1,
-      color: this.Materials_content.flg ? '#7cb535' : '#dadada'
-
-    })
+    .border({ width:2, color: this.Materials_content.flg ? '#5eb92b' : '#dadada' })
+    .backgroundColor(this.Materials_content.flg ?
+      '#eaffe0' : '#f1f2f3')
     .borderRadius(8)
     .onClick(() => {
       //点击之后对当前的状态取反
