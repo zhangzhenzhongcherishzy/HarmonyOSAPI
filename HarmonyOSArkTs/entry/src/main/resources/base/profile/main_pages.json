@@ -23,6 +23,9 @@
     "pages/day20250314/D0314Demo3",
     "pagesAbility/day20250317/D0317Demo1",
     "pagesAbility/day20250320/D0320Demo1",
-    "pagesAbility/day20250325/LemonTea"
+    "pagesAbility/day20250325/LemonTea",
+    "pagesAbility/day20250325/common/father",
+    "pagesAbility/day20250325/common/Son",
+    "pagesAbility/day20250328/ShopCar"
   ]
 }
