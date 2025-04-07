@@ -15,6 +15,10 @@
     {
       "name": "welcome",
       "value": "欢迎来到代码世界"
+    },
+    {
+      "name": "permission_calendar",
+      "value": "申请授权日历弹窗，用于增加待办事项"
     }
   ]
 }
