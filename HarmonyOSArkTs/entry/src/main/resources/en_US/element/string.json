@@ -15,6 +15,10 @@
     {
       "name": "welcome",
       "value": "welcome to harmonyOS"
+    },
+    {
+      "name": "permission_calendar",
+      "value": "calendar reason"
     }
   ]
 }

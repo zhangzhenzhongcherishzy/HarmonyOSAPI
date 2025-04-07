@@ -1,6 +1,20 @@
 {
   "app": {
-    "signingConfigs": [],
+    "signingConfigs": [
+      {
+        "name": "default",
+        "type": "HarmonyOS",
+        "material": {
+          "certpath": "C:\\Users\\Acer\\.ohos\\config\\default_HarmonyOSArkTs_rzq-OscX9tMkb06l2ibF-ocK4fWN-OWe8NxNZf7tgLA=.cer",
+          "storePassword": "0000001BAA4B1EFC5F4055743D59F7B7084E671A25F303DE0823B729F7DB760CB85F257AA20DD94223FEF8",
+          "keyAlias": "debugKey",
+          "keyPassword": "0000001B5C0FA30A3CDFD8FCBAC92B40784709CD571454E859E9FAF0452B18C1915D2D839C075D805B7D9A",
+          "profile": "C:\\Users\\Acer\\.ohos\\config\\default_HarmonyOSArkTs_rzq-OscX9tMkb06l2ibF-ocK4fWN-OWe8NxNZf7tgLA=.p7b",
+          "signAlg": "SHA256withECDSA",
+          "storeFile": "C:\\Users\\Acer\\.ohos\\config\\default_HarmonyOSArkTs_rzq-OscX9tMkb06l2ibF-ocK4fWN-OWe8NxNZf7tgLA=.p12"
+        }
+      }
+    ],
     "products": [
       {
         "name": "default",
@@ -12,7 +26,6 @@
             "caseSensitiveCheck": true,
             "useNormalizedOHMUrl": true
           },
-
         }
       }
     ],
