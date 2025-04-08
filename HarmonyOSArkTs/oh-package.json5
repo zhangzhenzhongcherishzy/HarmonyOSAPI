@@ -2,7 +2,8 @@
   "modelVersion": "5.0.2",
   "description": "Please describe the basic information.",
   "dependencies": {
-    "@pura/harmony-utils": "^1.2.9"
+    "@pura/harmony-utils": "^1.2.9",
+    "@wuyan/hm_chart": "^2.0.4"
   },
   "devDependencies": {
     "@ohos/hypium": "1.0.21",
