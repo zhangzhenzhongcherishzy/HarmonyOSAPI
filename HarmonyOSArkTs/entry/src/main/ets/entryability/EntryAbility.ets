@@ -2,29 +2,8 @@ import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.Ab
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
 import { AppUtil } from '@pura/harmony-utils'
-import { PreferencesClass } from '../pagesAbility/day20250409/common/Preferences';
 
 const DOMAIN = 0x0000;
-
-export class people_message {
-  name: string
-  phones: string
-  zj_type: string
-  zj_num: string
-  sex: string
-  birth: string
-  dq: string
-
-  constructor(name: string, phones: string, zj_type: string, zj_num: string, sex: string, birth: string, dq: string) {
-    this.name = name;
-    this.phones = phones;
-    this.zj_type = zj_type;
-    this.zj_num = zj_num;
-    this.sex = sex;
-    this.birth = birth;
-    this.dq = dq;
-  }
-}
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
@@ -40,17 +19,7 @@ export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
     // Main window is created, set main page for this ability
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
-    //用户首选项，检查登录状态
-    const token = PreferencesClass.getToken(this.context,PreferencesClass.defaultStore,PreferencesClass.Token)
-    let pageUrl = ''
-    if(token){
-      //登录了
-      pageUrl = "pages0317/day20250409/D0409Page4"
-    }else {
-      //没有登录
-      pageUrl = "pages0317/day20250409/D0409Page4"
-    }
-    windowStage.loadContent("pagesAbility/day20250409/D0409Page1", (err) => {
+    windowStage.loadContent("pagesAbility/day20250411/D0411Page3", (err) => {
       if (err.code) {
         hilog.error(DOMAIN, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
         return;

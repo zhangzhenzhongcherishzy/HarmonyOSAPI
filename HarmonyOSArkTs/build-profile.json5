@@ -6,9 +6,9 @@
         "type": "HarmonyOS",
         "material": {
           "certpath": "C:\\Users\\Acer\\.ohos\\config\\default_HarmonyOSArkTs_rzq-OscX9tMkb06l2ibF-ocK4fWN-OWe8NxNZf7tgLA=.cer",
-          "storePassword": "0000001BAA4B1EFC5F4055743D59F7B7084E671A25F303DE0823B729F7DB760CB85F257AA20DD94223FEF8",
+          "storePassword": "0000001BB786B512AE92B134A06A27184D63A12C5884730F4F91B7C32C06FB264FC124C7D9F368CA30B527",
           "keyAlias": "debugKey",
-          "keyPassword": "0000001B5C0FA30A3CDFD8FCBAC92B40784709CD571454E859E9FAF0452B18C1915D2D839C075D805B7D9A",
+          "keyPassword": "0000001B1EDBFCBB5551866124417CC35374D5225BA720E57848B593AD3D361DAEBA5BBFD77EF6959B8C76",
           "profile": "C:\\Users\\Acer\\.ohos\\config\\default_HarmonyOSArkTs_rzq-OscX9tMkb06l2ibF-ocK4fWN-OWe8NxNZf7tgLA=.p7b",
           "signAlg": "SHA256withECDSA",
           "storeFile": "C:\\Users\\Acer\\.ohos\\config\\default_HarmonyOSArkTs_rzq-OscX9tMkb06l2ibF-ocK4fWN-OWe8NxNZf7tgLA=.p12"
