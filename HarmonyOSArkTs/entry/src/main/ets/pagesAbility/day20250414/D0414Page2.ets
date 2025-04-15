@@ -26,7 +26,7 @@ struct D0414Page2 {
         })
       Button('删除数据')
         .onClick(async () => {
-          predicatesStore.delete('id',3)
+          await predicatesStore.delete('id',3)
           AlertDialog.show({
             message:`删除数据成功`
           })
@@ -48,7 +48,7 @@ struct D0414Page2 {
         })
       Button('删除数据库')
         .onClick(async () => {
-          predicatesStore.deletemysql()
+          await predicatesStore.deletemysql()
         })
       //查询数据库
       // Button('查询写入数据')
