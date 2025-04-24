@@ -6,6 +6,8 @@
   "author": "",
   "license": "",
   "dependencies": {},
-  "devDependencies": {},
+  "devDependencies": {
+    "myrcp": "file:../myrcp"
+  },
   "dynamicDependencies": {}
 }

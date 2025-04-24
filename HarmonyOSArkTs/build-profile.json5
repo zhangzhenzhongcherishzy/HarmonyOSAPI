@@ -78,6 +78,10 @@
           ]
         }
       ]
+    },
+    {
+      "name": "myrcp",
+      "srcPath": "./myrcp",
     }
   ]
 }
