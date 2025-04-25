@@ -1,6 +1,7 @@
 import { PhotoHelper, PickerUtil } from '@pura/harmony-utils/Index';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { RcpDemo1 } from './common/RcpDemo1';
+import { RcpDemo2 } from './common/RcpDemo2';
 
 @Entry
 @Component
@@ -16,7 +17,8 @@ struct D0422Page1 {
             this.uriStr = `调用相册，异常：\n${JSON.stringify(err)}`;
           });
         })
-      RcpDemo1()
+      // RcpDemo1()
+      RcpDemo2()
     }
     .width('100%')
     .height('100%')
