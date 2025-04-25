@@ -17,6 +17,19 @@
       "name": "pageThreeTmp",
       "pageSourceFile": "src/main/ets/pagesAbility/day20250320/D0320Demo1.ets",
       "buildFunction": "pageThreeTmpBuilder"
+    },
+    {
+      "name": "B1Page",
+      "pageSourceFile": "src/main/ets/pagesAbility/day20250507/common/B1Page.ets",
+      "buildFunction": "B1PageBuilder",
+      "data": {
+        "description": "this is B1Page"
+      }
+    },
+    {
+      "name": "B2Page",
+      "pageSourceFile": "src/main/ets/pagesAbility/day20250507/common/B2Page.ets",
+      "buildFunction": "B2PageBuilder"
     }
   ]
 }
