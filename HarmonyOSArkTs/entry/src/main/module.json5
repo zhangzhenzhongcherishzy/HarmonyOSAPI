@@ -11,6 +11,13 @@
       {
         "name": "ohos.permission.GET_NETWORK_INFO"
       },
+      //麦克风权限
+      {
+        "name": "ohos.permission.MICROPHONE",
+        "reason": "$string:welcome",
+        "usedScene": {
+        }
+      },
       //----------------------------------------------------------------------读取日历
       //授权等级： normal        对所有应用开放
       //授权方式： user_grant    用户授权  会弹窗
@@ -18,7 +25,7 @@
         //权限名称
         "name": 'ohos.permission.READ_CALENDAR',
         //申请权限说明
-        "reason":'$string:permission_calendar',
+        "reason": '$string:permission_calendar',
         //应用场景
         "usedScene": {}
       },
@@ -26,7 +33,7 @@
         //写入日历
         "name": 'ohos.permission.WRITE_CALENDAR',
         //申请权限说明
-        "reason":'$string:permission_calendar',
+        "reason": '$string:permission_calendar',
         //应用场景
         "usedScene": {}
       },
