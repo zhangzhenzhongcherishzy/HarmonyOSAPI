@@ -1,8 +1,9 @@
-import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { abilityAccessCtrl, AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { window,display } from '@kit.ArkUI';
+import { window, display } from '@kit.ArkUI';
 import { AppUtil, PreferencesUtil } from '@pura/harmony-utils'
 import { efRcp, efRcpConfig } from 'myrcp';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 const DOMAIN = 0x0000;
 
@@ -10,14 +11,19 @@ export const storage: LocalStorage = new LocalStorage()
 
 export default class EntryAbility extends UIAbility {
   /*****************************************************************一多开发部分*************************************************************************/
-  private windowObj?: window.Window  // 窗口对象
-  private curBp?: string // 当前断点标识
-  private myWidth?: number // 最小内容宽度
+  private windowObj?: window.Window
+  // 窗口对象
+  private curBp?: string
+  // 当前断点标识
+  private myWidth?: number
+
+  // 最小内容宽度
   // ...
   // 根据当前窗口尺寸更新断点
-  private updateBreakpoint(windowWidth:number) :void{
+  private updateBreakpoint(windowWidth: number): void {
     // 将长度的单位由px换算为vp
-    let windowWidthVp = windowWidth / (display.getDefaultDisplaySync().densityDPI / 160) // windowWidthVp = px值 / (DPI/160)  // 将物理像素转为虚拟像素(vp)
+    let windowWidthVp = windowWidth /
+      (display.getDefaultDisplaySync().densityDPI / 160) // windowWidthVp = px值 / (DPI/160)  // 将物理像素转为虚拟像素(vp)
     let newBp: string = ''
     let newWd: number
     if (windowWidthVp < 320) {
@@ -42,9 +48,23 @@ export default class EntryAbility extends UIAbility {
       AppStorage.setOrCreate('myWidth', this.myWidth)
     }
   }
+
   /*****************************************************************一多开发部分*************************************************************************/
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     AppUtil.init(this.context)
+    /****************************************************************自动授权start*******************************************************************************/
+    let AtManager = abilityAccessCtrl.createAtManager()
+    AtManager.requestPermissionsFromUser(this.context, ["ohos.permission.MICROPHONE"]).then((data) => {
+      AlertDialog.show({
+        message: '授权成功'
+      })
+    }).catch((err: BusinessError) => {
+      AlertDialog.show({
+        message: '授权失败'
+      })
+      return
+    })
+    /****************************************************************自动授权end*******************************************************************************/
     this.context.getApplicationContext().setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_NOT_SET);
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onCreate');
   }
@@ -60,7 +80,7 @@ export default class EntryAbility extends UIAbility {
       // 获取应用启动时的窗口尺寸
       this.updateBreakpoint(windowObj.getWindowProperties().windowRect.width)
       // 注册回调函数，监听窗口尺寸变化
-      windowObj.on('windowSizeChange', (windowSize)=>{
+      windowObj.on('windowSizeChange', (windowSize) => {
         this.updateBreakpoint(windowSize.width)
       })
     });
@@ -72,8 +92,7 @@ export default class EntryAbility extends UIAbility {
     efRcp
       .enableLogInterceptor()// .addCustomInterceptors([new ResponseCheckTokenInterceptor2(RevalidateTokenRequest.getInstance())])
       .setBaseURL('http://192.168.105.103:8989')// .disableLoading()
-      .enableLottie()
-        // .disableLoading()
+      .enableLottie()// .disableLoading()
       .create()
     //   .builder()
     // if (!efRcpConfig.token.tokenValue) {
@@ -82,7 +101,7 @@ export default class EntryAbility extends UIAbility {
     //   efRcpConfig.token.tokenName = "Authorization";
     // }
     /*****************************************************************rcp三方库初始化部分*************************************************************************/
-    windowStage.loadContent("pagesAbility/day20250507/D0507Page1",storage,(err) => {
+    windowStage.loadContent("pagesAbility/day20250509/D0509Page1", storage, (err) => {
       if (err.code) {
         hilog.error(DOMAIN, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
         return;
