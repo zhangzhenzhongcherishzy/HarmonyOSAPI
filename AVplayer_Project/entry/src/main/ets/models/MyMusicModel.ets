@@ -1,23 +1,4 @@
-/**
- * 发布得数据解构  通知页面播放得数据结构
- */
-export interface PlayStateType{
-  img:ResourceStr
-  name:string
-  author:string
-  url:string
-  playIndex:number
-  //已经播放的时长
-  time:number
-  //播放总时间
-  duration:number
-  //是否正在播放
-  isPlay:boolean
-  //播放模式
-  playMode: 'auto' | 'repeat' | 'random'
-  //播放列表
-  playList:SongItemType[]
-}
+
 /**
  * 歌曲信息
  */
@@ -89,7 +70,30 @@ export interface FavoriteListType{
   //歌曲列表
   songs:SongItemType[]
 }
-
+//定义事件ID
+export enum EmitEventType{
+  UPDATE_STATE
+}
+/**
+ * 发布得数据解构  通知页面播放得数据结构
+ */
+export interface PlayStateType{
+  img:ResourceStr
+  name:string
+  author:string
+  url:string
+  playIndex:number
+  //已经播放的时长
+  time:number
+  //播放总时间
+  duration:number
+  //是否正在播放
+  isPlay:boolean
+  //播放模式
+  playMode: 'auto' | 'repeat' | 'random'
+  //播放列表
+  playList:SongItemType[]
+}
 //播放的歌曲信息类
 export class PlayStateModel implements PlayStateType{
   img:ResourceStr = ''

@@ -105,9 +105,16 @@ export const recommendList: RecommendListType[] = [
   }
 ]
 /**
- * 歌曲列表数据
+ * 歌曲列表数据 https://elaina-1017-1331423751.cos.ap-guangzhou.myqcloud.com/AVPlayer/1.mp3
  */
 export const songs:SongItemType[] = [
+  {
+    img: 'http://yjy-teach-oss.oss-cn-beijing.aliyuncs.com/HeimaCloudMusic/2.jpg',
+    name: '给我一个理由忘记',
+    author: 'A-Lin',
+    url: 'https://elaina-1017-1331423751.cos.ap-guangzhou.myqcloud.com/AVPlayer/A-Lin - 给我一个理由忘记 (V0).mp3',
+    id: '0016'
+  },
   {
     img: 'http://yjy-teach-oss.oss-cn-beijing.aliyuncs.com/HeimaCloudMusic/0.jpg',
     name: '直到世界的尽头',
