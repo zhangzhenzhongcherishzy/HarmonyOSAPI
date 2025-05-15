@@ -1,14 +1,18 @@
+import playNav from '../components/playNav'
 import { tabsData } from '../constants/MusicConstants'
-import { TabClass } from '../models/Index'
+import { EmitEventType, PlayStateModel, PlayStateType, TabClass } from '../models/Index'
 import { recommondPage } from './recommondPage'
 import { SongListPage } from './SongListPage'
-
+import { router } from '@kit.ArkUI'
+import { emitter } from '@kit.BasicServicesKit'
 
 @Entry
 @Component
 struct Index {
   //当前项
   @State currentName: string = 'recommend'
+  //订阅事件 接受广播通知，进行赋值
+  @State playState: PlayStateType = new PlayStateModel({} as PlayStateType)
 
   //底部导航栏 切换功能
   @Builder
@@ -32,6 +36,15 @@ struct Index {
         .margin({ top: 5 })
         .fontColor(item.name === this.currentName ? $r('app.color.primary_light') : $r('app.color.primary_dark'))
     }
+  }
+
+  //接受订阅事件 更新 playstate
+  aboutToAppear() {
+    emitter.on({ eventId: EmitEventType.UPDATE_STATE }, (data: emitter.EventData) => {
+      if (data.data !== undefined) {
+        this.playState = new PlayStateModel(JSON.parse(data.data.playState))
+      }
+    })
   }
 
   build() {
@@ -65,7 +78,16 @@ struct Index {
           this.currentName = tabsData[index].name
         })
 
-        //第二部分  播放器
+        //第二部分  背景播放器控件
+        if (this.currentName !== 'mine') {
+          playNav({ playState: this.playState })
+            .translate({ y: -60 })
+            .onClick(() => {
+              router.pushUrl({
+                url: "pages/playing"
+              })
+            })
+        }
       }
       .height('100%')
       .width('100%')

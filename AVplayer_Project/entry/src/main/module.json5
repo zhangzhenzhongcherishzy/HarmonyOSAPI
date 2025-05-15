@@ -1,5 +1,14 @@
 {
   "module": {
+    "requestPermissions": [
+      {
+        "name": "ohos.permission.INTERNET",
+      },
+      //申请 长时任务权限 允许Service Ability在后台持续运行
+      {
+        "name": "ohos.permission.KEEP_BACKGROUND_RUNNING"
+      }
+    ],
     "name": "entry",
     "type": "entry",
     "description": "$string:module_desc",
@@ -12,11 +21,12 @@
     "deliveryWithInstall": true,
     "installationFree": false,
     "pages": "$profile:main_pages",
-    "requestPermissions": [{
-      "name": "ohos.permission.INTERNET",
-    }],
     "abilities": [
       {
+        "backgroundModes": [
+          // 长时任务类型的配置项
+          "audioPlayback"
+        ],
         "name": "EntryAbility",
         "srcEntry": "./ets/entryability/EntryAbility.ets",
         "description": "$string:EntryAbility_desc",

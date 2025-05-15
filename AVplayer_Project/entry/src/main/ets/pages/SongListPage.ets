@@ -1,5 +1,6 @@
 import { favoriteList } from "../constants/MusicConstants"
 import { SongItemType } from "../models/MyMusicModel"
+import { AVPlayerUtils } from "../utils/AVPlayerUtils"
 
 @Entry
 @Component
@@ -154,6 +155,8 @@ export struct SongListPage {
             .onClick(() => {
               //点击执行 传递歌曲数据到播放页
               console.log(JSON.stringify(item))
+              //点击添加歌曲信息到播放列表
+              AVPlayerUtils.SingPlayPlus(item)
             })
           },(item:SongItemType,index) => JSON.stringify(item))
           //触底显示底线
