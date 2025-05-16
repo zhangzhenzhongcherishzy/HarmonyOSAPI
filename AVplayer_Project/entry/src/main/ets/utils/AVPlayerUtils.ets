@@ -2,7 +2,9 @@ import { media } from "@kit.MediaKit";
 import { EmitEventType, PlayStateType, SongItemType } from "../models/Index";
 import { emitter } from "@kit.BasicServicesKit";
 import { AVSessionUtils } from "./AVSessionUtils";
-
+import { common } from "@kit.AbilityKit";
+import { util } from "@kit.ArkTS";
+import { LyricController, LyricParser } from '@seagazer/cclyric'
 /**
  * 音乐播放公共模块
  */
@@ -30,6 +32,8 @@ export class AVPlayerUtils {
   static playList:SongItemType[] = []
   //播放的索引
   static playIndex:number = -1
+  //歌词
+  static lyric:string =''
   /**
    * 1、初始化
    * 我们需要在整个应用进入环境时，就进行播放去的创建，所以我们在EntryAbility的onWindowStageCreate周期中进行调用
@@ -120,6 +124,7 @@ export class AVPlayerUtils {
     AVSessionUtils.startBackgroundRunning()
     //同步播放状态到控制中心
     AVSessionUtils.setAVPlaybackState()
+    AVPlayerUtils.lyricMusic(songs.name + '.lrc')
     //首先判断歌曲播放列表中是否存在该歌曲，如果存在，再判断是否正在播放，如果正在播放，重头播放，如果不在播放，则切歌,如果没有在列表中，则添加进列表后进行切歌
     //判断是否在列表中
     const  isList = AVPlayerUtils.playList.some(item => item.id  === songs.id)
@@ -256,8 +261,17 @@ export class AVPlayerUtils {
     //将准备好的数据发送出去
     AVPlayerUtils.updataState(PlayState)
   }
+
   //销毁播放器
   static  async relase(){
     await AVPlayerUtils.avPlayer?.release()
+  }
+
+  //5、获取歌词
+  static lyricMusic(lyric:string){
+    let value = (getContext() as common.UIAbilityContext).resourceManager.getRawFileContentSync(lyric)//读取rawfile下的文件转成string
+    let textDecoder:util.TextDecoder = util.TextDecoder.create()// 调用util模块的TextDecoder类
+    AVPlayerUtils.lyric = textDecoder.decodeToString(value);// 对Uint8Array解码
+    console.log(">>>>" + AVPlayerUtils.lyric)
   }
 }
