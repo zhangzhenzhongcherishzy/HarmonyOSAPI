@@ -47,7 +47,7 @@ export class AVSessionUtils {
       composer: '小红',
       duration: AVPlayerUtils.duration,
       //歌词
-      // lyric:
+      lyric:AVPlayerUtils.lyric
     })
   }
   //4、AVSession设置播放状态

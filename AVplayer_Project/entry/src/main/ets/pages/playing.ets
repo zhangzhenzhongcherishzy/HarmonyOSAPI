@@ -58,42 +58,32 @@ struct playing {
   private parser = new LyricParser()
 
   //组件生周期，实现订阅接受歌曲信息
-  async aboutToAppear() {
+  aboutToAppear() {
     //接收当前正在播放歌曲的数据
     emitter.on({ eventId: EmitEventType.UPDATE_STATE }, (data: emitter.EventData) => {
       if (data.data !== undefined) {
         this.playState = new PlayStateModel(JSON.parse(data.data.playState))
       }
     })
-
-    //解析歌词
-    // let lyric = this.parser.parse(MockData.src1)
-    // let lyric = this.parser.parse(MusicData('给我一个理由忘记.lrc'))
-    this.lyricName()
-  }
-
-  lyricName() {
-    let value = MusicData(this.playState.name + '.lrc')
     setTimeout(() => {
-      if (value) {
-        console.log(">>>name:" + this.playState.name)
-        let lyric = this.parser.parse(value)
-        //设置歌词
-        this.lyricController.setLyric(lyric)
-      } else {
-        return
-      }
+      //测试歌曲名字是否传递
+      // console.log(">>>>name:" + this.playState.name)
+      //解析歌词
+      // let lyric = this.parser.parse(MockData.src1)
+      // let lyric = this.parser.parse(MusicData('给我一个理由忘记.lrc'))
+      let lyric = this.parser.parse(MusicData(this.playState.name + '.lrc'))
+      //设置歌词
+      this.lyricController.setLyric(lyric)
+      // 自定义歌词样式属性
+      this.lyricController
+        .setTextSize(14)//设置歌词绘制的缓存量，在屏幕外面绘制一定数量的歌词，提升上下滑动的性能
+        .setCacheSize(4)//歌词文本普通颜色
+        .setTextColor('#fff')//设置文本聚焦颜色，当前播放的歌词属于聚焦状态
+        .setHighlightColor('#fff')//设置歌词行间距 默认16vp
+        .setLineSpace(16)//设置无歌词时的提示语 默认为--
+        .setEmptyHint('当前没有歌词')//设置歌词的显示模式
+        .setAlignMode('center')
     }, 100)
-    // 自定义歌词样式属性
-    this.lyricController
-      //歌词的文本尺寸，默认18vp
-      .setTextSize(14)//设置歌词绘制的缓存量，在屏幕外面绘制一定数量的歌词，提升上下滑动的性能
-      .setCacheSize(4)//歌词文本普通颜色
-      .setTextColor('#fff')//设置文本聚焦颜色，当前播放的歌词属于聚焦状态
-      .setHighlightColor('#fff')//设置歌词行间距 默认16vp
-      .setLineSpace(16)//设置无歌词时的提示语 默认为--
-      .setEmptyHint('当前没有歌词')//设置歌词的显示模式
-      .setAlignMode('center')
   }
 
   build() {
