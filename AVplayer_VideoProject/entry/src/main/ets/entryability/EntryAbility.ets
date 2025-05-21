@@ -15,9 +15,8 @@ export default class EntryAbility extends UIAbility {
   }
 
   onWindowStageCreate(windowStage: window.WindowStage): void {
-    // Main window is created, set main page for this ability
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
-    //获取设备状态栏和导航栏高度
+    /*获取设备状态栏和导航栏高度*/
     //获取主窗口对象
     let windowClass: window.Window = windowStage.getMainWindowSync();
     //设置全屏布局 为沉浸式布局
