@@ -1,25 +1,26 @@
-import { VideoPlayView } from '../views/VideoPlayView';
+import { BottomView } from '../views/BottomView'
+import { CommentsView } from '../views/CommentsView'
+import { RelatedListView } from '../views/RelatedListView'
+import { VideoPlayView } from '../views/VideoPlayView'
 
 @Entry
 @Component
 struct Index {
-  @State message: string = 'Hello World';
-
   build() {
     Column() {
       VideoPlayView()
 
       Scroll() {
         Column() {
-          // RelatedListView()
-          // CommentsView()
+          RelatedListView()
+          CommentsView()
         }
       }
       .layoutWeight(1)
       .scrollBar(BarState.Off)
       .padding({ bottom: 16 })
 
-      // BottomView()
+      BottomView()
     }
     .height('100%')
     .width('100%')
